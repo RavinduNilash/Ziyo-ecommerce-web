@@ -72,9 +72,10 @@ export default function RegisterPage() {
       await signUp(formData.email, formData.password, formData.name);
       toast.success('Account created successfully!');
       router.push('/');
-    } catch (error: any) {
+    } catch (error) {
       console.error('Registration error:', error);
-      toast.error(error.message || 'Failed to create account');
+      const errorMessage = error instanceof Error ? error.message : 'Failed to create account';
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }
