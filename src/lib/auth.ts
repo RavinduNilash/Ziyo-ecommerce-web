@@ -2,8 +2,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
-  User
+  updateProfile
 } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { auth, db } from './firebase';
@@ -25,6 +24,10 @@ export interface UserData {
 }
 
 export const signUp = async (email: string, password: string, displayName: string) => {
+  if (!auth) {
+    throw new Error('Firebase Auth is not initialized. Please configure your environment variables.');
+  }
+  
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
@@ -33,14 +36,16 @@ export const signUp = async (email: string, password: string, displayName: strin
     await updateProfile(user, { displayName });
     
     // Create user document in Firestore
-    const userData: UserData = {
-      uid: user.uid,
-      email: user.email!,
-      displayName,
-      createdAt: new Date()
-    };
-    
-    await setDoc(doc(db, 'users', user.uid), userData);
+    if (db) {
+      const userData: UserData = {
+        uid: user.uid,
+        email: user.email!,
+        displayName,
+        createdAt: new Date()
+      };
+      
+      await setDoc(doc(db, 'users', user.uid), userData);
+    }
     
     return user;
   } catch (error) {
@@ -49,6 +54,10 @@ export const signUp = async (email: string, password: string, displayName: strin
 };
 
 export const signIn = async (email: string, password: string) => {
+  if (!auth) {
+    throw new Error('Firebase Auth is not initialized. Please configure your environment variables.');
+  }
+  
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
@@ -58,6 +67,10 @@ export const signIn = async (email: string, password: string) => {
 };
 
 export const logOut = async () => {
+  if (!auth) {
+    throw new Error('Firebase Auth is not initialized. Please configure your environment variables.');
+  }
+  
   try {
     await signOut(auth);
   } catch (error) {
@@ -66,6 +79,11 @@ export const logOut = async () => {
 };
 
 export const getUserData = async (uid: string): Promise<UserData | null> => {
+  if (!db) {
+    console.warn('Firestore is not initialized. Please configure your environment variables.');
+    return null;
+  }
+  
   try {
     const userDoc = await getDoc(doc(db, 'users', uid));
     if (userDoc.exists()) {
@@ -79,6 +97,10 @@ export const getUserData = async (uid: string): Promise<UserData | null> => {
 };
 
 export const updateUserData = async (uid: string, userData: Partial<UserData>) => {
+  if (!db) {
+    throw new Error('Firestore is not initialized. Please configure your environment variables.');
+  }
+  
   try {
     await setDoc(doc(db, 'users', uid), userData, { merge: true });
   } catch (error) {

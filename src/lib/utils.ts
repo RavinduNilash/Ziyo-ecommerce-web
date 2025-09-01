@@ -41,6 +41,7 @@ export const getErrorMessage = (error: unknown): string => {
   return String(error);
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const debounce = <T extends (...args: any[]) => any>(
   func: T,
   wait: number
