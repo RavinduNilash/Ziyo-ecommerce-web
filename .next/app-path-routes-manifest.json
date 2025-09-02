@@ -2,8 +2,19 @@
   "/(auth)/login/page": "/login",
   "/(auth)/register/page": "/register",
   "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/admin/orders/page": "/admin/orders",
+  "/admin/page": "/admin",
+  "/admin/products/page": "/admin/products",
   "/cart/page": "/cart",
+  "/categories/page": "/categories",
+  "/checkout/page": "/checkout",
   "/favicon.ico/route": "/favicon.ico",
+  "/orders/page": "/orders",
+  "/orders/success/page": "/orders/success",
   "/page": "/",
-  "/products/page": "/products"
+  "/products/[id]/page": "/products/[id]",
+  "/products/page": "/products",
+  "/profile/page": "/profile",
+  "/wishlist/page": "/wishlist"
 }

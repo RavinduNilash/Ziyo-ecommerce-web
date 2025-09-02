@@ -48,6 +48,28 @@ export const sampleProducts: Product[] = [
     reviews: 127,
     tags: ['wireless', 'bluetooth', 'noise-cancelling'],
     featured: true,
+    variants: [
+      {
+        id: 'color',
+        name: 'Color',
+        values: ['Black', 'White', 'Blue', 'Red']
+      },
+      {
+        id: 'size',
+        name: 'Size',
+        values: ['Standard', 'Large']
+      }
+    ],
+    variantCombinations: {
+      'color:Black,size:Standard': { stock: 10 },
+      'color:Black,size:Large': { stock: 8, price: 219.99 },
+      'color:White,size:Standard': { stock: 6 },
+      'color:White,size:Large': { stock: 4, price: 219.99 },
+      'color:Blue,size:Standard': { stock: 3 },
+      'color:Blue,size:Large': { stock: 2, price: 219.99 },
+      'color:Red,size:Standard': { stock: 2 },
+      'color:Red,size:Large': { stock: 1, price: 219.99 }
+    },
     createdAt: new Date(),
     updatedAt: new Date(),
   },

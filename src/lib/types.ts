@@ -1,3 +1,16 @@
+export interface ProductVariant {
+  id: string;
+  name: string;
+  values: string[];
+}
+
+export interface ProductVariantOption {
+  variantId: string;
+  value: string;
+  priceModifier?: number;
+  stockModifier?: number;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -11,6 +24,14 @@ export interface Product {
   reviews?: number;
   tags?: string[];
   featured?: boolean;
+  variants?: ProductVariant[];
+  variantCombinations?: {
+    [key: string]: {
+      price?: number;
+      stock?: number;
+      images?: string[];
+    };
+  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -59,7 +80,10 @@ export interface OrderItem {
 }
 
 export interface Address {
+  firstName?: string;
+  lastName?: string;
   street: string;
+  streetAddress?: string;
   city: string;
   state: string;
   zipCode: string;
