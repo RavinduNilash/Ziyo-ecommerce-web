@@ -1,0 +1,9 @@
+{
+  "/(auth)/login/page": "/login",
+  "/(auth)/register/page": "/register",
+  "/_not-found/page": "/_not-found",
+  "/cart/page": "/cart",
+  "/favicon.ico/route": "/favicon.ico",
+  "/page": "/",
+  "/products/page": "/products"
+}
