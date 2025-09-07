@@ -33,13 +33,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     : 0;
 
   return (
-    <div 
-      className="group relative bg-white rounded-3xl shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 transform hover:-translate-y-2 border border-slate-100/50 backdrop-blur-sm overflow-hidden"
+    <div
+      className="group relative bg-white rounded-3xl shadow-lg shadow-[#AAAAAA]/20 hover:shadow-2xl hover:shadow-[#000000]/10 transition-all duration-500 transform hover:-translate-y-2 border border-[#AAAAAA]/20 backdrop-blur-sm overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Modern Image Container */}
-      <div className="relative overflow-hidden rounded-t-3xl bg-gradient-to-br from-slate-50 to-slate-100">
+      <div className="relative overflow-hidden rounded-t-3xl bg-gradient-to-br from-[#FFFDF2] to-[#AAAAAA]/10">
         <Link href={`/products/${product.id}`}>
           <div className="aspect-square overflow-hidden relative">
             <Image
@@ -78,13 +78,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <div className="flex space-x-2">
             <Link href={`/products/${product.id}`}>
               <button className="p-3 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 group/btn">
-                <Eye className="h-5 w-5 text-slate-600 group-hover/btn:text-violet-600" />
+                <Eye className="h-5 w-5 text-[#AAAAAA] group-hover/btn:text-[#000000]" />
               </button>
             </Link>
             <button 
               onClick={handleAddToCart}
               disabled={product.stock === 0 || isLoading}
-              className="p-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-3 bg-[#000000] rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ShoppingCart className="h-5 w-5 text-white" />
             </button>
@@ -114,14 +114,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <div className="p-6 space-y-4">
         {/* Product Title */}
         <Link href={`/products/${product.id}`}>
-          <h3 className="font-bold text-xl text-slate-800 hover:text-violet-600 transition-colors duration-300 line-clamp-2 leading-tight">
+          <h3 className="font-bold text-xl text-[#000000] hover:text-[#000000] transition-colors duration-300 line-clamp-2 leading-tight">
             {product.name}
           </h3>
         </Link>
         
         {/* Category Tag */}
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center px-3 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-xl">
+          <span className="inline-flex items-center px-3 py-1 bg-[#AAAAAA]/20 text-[#AAAAAA] text-xs font-medium rounded-xl">
             {product.category}
           </span>
           
@@ -135,15 +135,15 @@ export const ProductCard = ({ product }: ProductCardProps) => {
                     className={`h-4 w-4 ${
                       i < Math.floor(product.rating!)
                         ? 'fill-amber-400 text-amber-400'
-                        : 'text-slate-300'
+                        : 'text-[#AAAAAA]/50'
                     }`}
                   />
                 ))}
               </div>
-              <span className="text-sm font-medium text-slate-600">
+              <span className="text-sm font-medium text-[#AAAAAA]">
                 {product.rating?.toFixed(1)}
               </span>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-[#AAAAAA]/70">
                 ({product.reviews || 0})
               </span>
             </div>
@@ -151,18 +151,18 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         </div>
 
         {/* Product Description */}
-        <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
+        <p className="text-[#AAAAAA] text-sm leading-relaxed line-clamp-2">
           {product.description}
         </p>
 
         {/* Enhanced Price Section */}
         <div className="flex items-center justify-between">
           <div className="flex items-baseline space-x-2">
-            <span className="text-2xl font-black text-slate-900">
+            <span className="text-2xl font-black text-[#000000]">
               {formatPrice(product.price)}
             </span>
             {product.originalPrice && (
-              <span className="text-lg text-slate-400 line-through font-medium">
+              <span className="text-lg text-[#AAAAAA]/70 line-through font-medium">
                 {formatPrice(product.originalPrice)}
               </span>
             )}
@@ -185,7 +185,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             onClick={handleAddToCart}
             disabled={product.stock === 0 || isLoading}
             loading={isLoading}
-            className="flex-1 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white border-0 rounded-2xl font-semibold py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="flex-1 bg-[#000000] hover:bg-[#333333] text-[#FFFDF2] border-0 rounded-2xl font-semibold py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
           >
             <ShoppingCart className="mr-2 h-5 w-5" />
             {isInCart(product.id) ? 'Add More' : 'Add to Cart'}
@@ -194,7 +194,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <Link href={`/products/${product.id}`}>
             <Button 
               variant="outline" 
-              className="px-6 py-3 border-2 border-slate-200 text-slate-600 hover:border-violet-300 hover:text-violet-600 hover:bg-violet-50 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105"
+              className="px-6 py-3 border-2 border-[#AAAAAA]/30 text-[#AAAAAA] hover:border-[#000000] hover:text-[#000000] hover:bg-[#AAAAAA]/10 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105"
             >
               <Eye className="h-5 w-5" />
             </Button>
@@ -203,7 +203,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       </div>
 
       {/* Subtle Glow Effect */}
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-violet-600/5 to-fuchsia-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 rounded-3xl bg-[#000000]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
     </div>
   );
 };
