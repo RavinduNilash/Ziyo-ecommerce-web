@@ -394,7 +394,7 @@ export const electronicsProducts: Product[] = [
     price: 82497,
     originalPrice: 92397,
     images: [
-      'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=500&h=500&fit=crop'
+      'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=500&h=500&fit=crop'
     ],
     category: 'Smart Home & IoT',
     stock: 19,
@@ -520,7 +520,7 @@ export const electronicsProducts: Product[] = [
     description: 'Premium smartwatch with rotating bezel, advanced health monitoring, sleep tracking, and Wear OS powered by Samsung.',
     price: 141897,
     images: [
-      'https://images.unsplash.com/photo-1579586337278-3f436f0c4793?w=500&h=500&fit=crop'
+      'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&h=500&fit=crop'
     ],
     category: 'Wearable Technology',
     stock: 21,
@@ -610,7 +610,7 @@ export const electronicsProducts: Product[] = [
     description: 'Stream 4K HDR content with A15 Bionic chip, Dolby Vision, spatial audio, and Siri Remote with touch-enabled clickpad.',
     price: 59397,
     images: [
-      'https://images.unsplash.com/photo-1616353071752-1c3c6c2b5dc5?w=500&h=500&fit=crop'
+      'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500&h=500&fit=crop'
     ],
     category: 'TV & Home Entertainment',
     stock: 38,
