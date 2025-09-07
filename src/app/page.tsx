@@ -7,12 +7,29 @@ import { Button } from '@/components/ui/Button';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { sampleProducts, sampleCategories } from '@/lib/sampleData';
 import { Product, Category } from '@/lib/types';
-import { ArrowRight, Star, Shield, Truck, RefreshCw, TrendingUp, Zap } from 'lucide-react';
+import { ArrowRight, Star, TrendingUp, Zap } from 'lucide-react';
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Background images for slideshow
+  const backgroundImages = [
+    '/hero-background.jpg',
+    '/hero2.jpg','/hero3.jpg'  ];
+
+  // Auto-change background images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundImages.length
+      );
+    }, 6000); // Change every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
 
   useEffect(() => {
     // Simulate API call
@@ -30,64 +47,120 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#FFFDF2]">
-      {/* Hero Section */}
-      <section className="bg-[#FFFDF2] text-[#000000] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-[#000000] mb-6 leading-tight">
-              Welcome to Ziyo
-            </h1>
-            <p className="text-xl md:text-2xl mb-12 text-[#AAAAAA] max-w-3xl mx-auto leading-relaxed">
-              Discover extraordinary products curated for the modern lifestyle.
-              <span className="block mt-2 text-[#000000]">Premium quality meets unbeatable value.</span>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+      {/* Modern Elegant Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Auto-Moving Background Images */}
+        <div className="absolute inset-0">
+          {backgroundImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              style={{
+                backgroundImage: `url('${image}')`
+              }}
+            ></div>
+          ))}
+          {/* Black Overlay for dramatic effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#000000]/50 via-[#000000]/40 to-[#000000]/30"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/30 via-transparent to-transparent"></div>
+        </div>
+        
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 25% 25%, #000000 2px, transparent 2px),
+                             radial-gradient(circle at 75% 75%, #000000 2px, transparent 2px)`,
+            backgroundSize: '60px 60px',
+            backgroundPosition: '0 0, 30px 30px'
+          }}></div>
+        </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-20 w-32 h-32 bg-[#000000]/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-32 right-16 w-48 h-48 bg-[#AAAAAA]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-[#000000]/3 rounded-full blur-2xl animate-bounce"></div>
+        
+        {/* Luxury Accent Elements */}
+        <div className="absolute top-1/4 right-1/4 w-1 h-32 bg-gradient-to-b from-[#000000]/20 to-transparent rotate-45"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-1 h-24 bg-gradient-to-t from-[#AAAAAA]/30 to-transparent -rotate-45"></div>
+        
+        {/* Main Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="space-y-12">
+            {/* Premium Badge */}
+            <div className="inline-flex items-center px-8 py-4 bg-[#FFFDF2]/15 backdrop-blur-sm rounded-full border border-[#FFFDF2]/25 shadow-xl">
+              <span className="text-sm font-medium text-[#FFFDF2] tracking-widest uppercase">
+                ✨ Luxury Redefined
+              </span>
+            </div>
+            
+            {/* Main Heading */}
+            <div className="space-y-8">
+              <div className="flex justify-center">
+                <div className="relative group">
+                  <Image 
+                    src="/logo-transparent.png" 
+                    alt="Ziyo Logo" 
+                    width={400}
+                    height={400}
+                    className="object-contain transition-all duration-500 transform group-hover:scale-105 drop-shadow-2xl"
+                  />
+                </div>
+              </div>
+              
+              <h2 className="text-2xl md:text-4xl lg:text-5xl font-light text-[#FFFDF2]/90 tracking-wide leading-relaxed">
+                Where <span className="font-medium italic">extraordinary</span> meets <span className="font-medium italic">everyday</span>
+              </h2>
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-8 justify-center pt-12">
               <Link href="/products">
-                <Button size="lg" className="bg-[#000000] hover:bg-[#333333] text-[#FFFDF2] border-0 shadow-2xl transform hover:scale-105 transition-all duration-300 px-8 py-4">
-                  Explore Collection
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                <Button 
+                  size="lg" 
+                  className="group bg-[#FFFDF2] hover:bg-[#FFFDF2]/90 text-[#000000] border-0 shadow-2xl transform hover:scale-105 transition-all duration-500 px-16 py-8 text-xl font-medium rounded-3xl"
+                >
+                  <span className="relative z-10 tracking-wide">Discover Collection</span>
+                  <ArrowRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </Button>
               </Link>
               <Link href="/categories">
-                <Button size="lg" variant="outline" className="border-[#AAAAAA] text-[#000000] hover:bg-[#000000] hover:text-[#FFFDF2] backdrop-blur-sm px-8 py-4 transform hover:scale-105 transition-all duration-300">
-                  Browse Categories
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="group border-2 border-[#FFFDF2]/70 text-[#FFFDF2] hover:bg-[#FFFDF2] hover:text-[#000000] backdrop-blur-sm px-16 py-8 text-xl font-medium rounded-3xl transform hover:scale-105 transition-all duration-500"
+                >
+                  <span className="relative z-10 tracking-wide">Explore Categories</span>
                 </Button>
               </Link>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Enhanced Features Section */}
-      <section className="py-20 bg-[#FFFDF2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-[#000000] mb-4">Why Choose Ziyo?</h2>
-            <p className="text-xl text-[#AAAAAA] max-w-2xl mx-auto">Experience the difference with our premium service standards</p>
+        
+        {/* Slideshow Indicators */}
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2">
+          <div className="flex space-x-3">
+            {backgroundImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentImageIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex 
+                    ? 'bg-[#FFFDF2] scale-125' 
+                    : 'bg-[#FFFDF2]/40 hover:bg-[#FFFDF2]/70'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-[#AAAAAA]/20">
-              <div className="mx-auto w-20 h-20 bg-[#000000] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Truck className="h-10 w-10 text-[#FFFDF2]" />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#000000]">Lightning Fast Delivery</h3>
-              <p className="text-[#AAAAAA] leading-relaxed">Free express shipping on orders over $50. Get your products delivered within 24-48 hours.</p>
-            </div>
-            <div className="group text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-[#AAAAAA]/20">
-              <div className="mx-auto w-20 h-20 bg-[#000000] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Shield className="h-10 w-10 text-[#FFFDF2]" />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#000000]">Bank-Level Security</h3>
-              <p className="text-[#AAAAAA] leading-relaxed">Your payment information is protected with industry-leading encryption and security protocols.</p>
-            </div>
-            <div className="group text-center p-8 rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-[#AAAAAA]/20">
-              <div className="mx-auto w-20 h-20 bg-[#000000] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <RefreshCw className="h-10 w-10 text-[#FFFDF2]" />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-[#000000]">Hassle-Free Returns</h3>
-              <p className="text-[#AAAAAA] leading-relaxed">30-day money-back guarantee. Return any item, no questions asked, for a full refund.</p>
-            </div>
+        </div>
+        
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-[#FFFDF2]/70 rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-[#FFFDF2]/70 rounded-full mt-2 animate-pulse"></div>
           </div>
         </div>
       </section>
