@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/Input';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card';
 import { toast } from 'react-hot-toast';
 import { User, MapPin, Calendar, Edit3, Save, X } from 'lucide-react';
+import { Address } from '@/lib/types';
 
 export default function ProfilePage() {
   const { user, userData, loading } = useAuth();
@@ -23,7 +24,7 @@ export default function ProfilePage() {
       state: '',
       zipCode: '',
       country: ''
-    }
+    } as Address
   });
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export default function ProfilePage() {
           state: '',
           zipCode: '',
           country: ''
-        }
+        } as Address
       });
     }
   }, [user, userData, loading, router]);

@@ -82,7 +82,10 @@ export interface OrderItem {
 export interface Address {
   firstName?: string;
   lastName?: string;
-  street: string;
+  email?: string;
+  phone?: string;
+  street?: string;
+  address?: string;
   streetAddress?: string;
   city: string;
   state: string;

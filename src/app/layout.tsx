@@ -5,6 +5,7 @@ import { CartProvider } from '@/context/CartContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import { SearchProvider } from '@/context/SearchContext';
 import { ReviewProvider } from '@/context/ReviewContext';
+import { ProductProvider } from '@/context/ProductContext';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import "./globals.css";
@@ -23,29 +24,31 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased min-h-screen flex flex-col">
         <AuthProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <SearchProvider>
-                <ReviewProvider>
-                  <Header />
-                  <main className="flex-1">
-                    {children}
-                  </main>
-                  <Footer />
-                  <Toaster 
-                    position="bottom-right"
-                    toastOptions={{
-                    duration: 3000,
-                    style: {
-                      background: '#363636',
-                      color: '#fff',
-                    },
-                  }}
-                />
-                </ReviewProvider>
-              </SearchProvider>
-            </WishlistProvider>
-          </CartProvider>
+          <ProductProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <SearchProvider>
+                  <ReviewProvider>
+                    <Header />
+                    <main className="flex-1">
+                      {children}
+                    </main>
+                    <Footer />
+                    <Toaster 
+                      position="bottom-right"
+                      toastOptions={{
+                      duration: 3000,
+                      style: {
+                        background: '#363636',
+                        color: '#fff',
+                      },
+                    }}
+                  />
+                  </ReviewProvider>
+                </SearchProvider>
+              </WishlistProvider>
+            </CartProvider>
+          </ProductProvider>
         </AuthProvider>
       </body>
     </html>

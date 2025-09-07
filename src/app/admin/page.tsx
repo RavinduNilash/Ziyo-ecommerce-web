@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import { AdminNavbar } from '@/components/admin/AdminNavbar';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { 
@@ -16,7 +17,8 @@ import {
   Activity,
   Sparkles,
   ArrowRight,
-  Package
+  Package,
+  TagIcon
 } from 'lucide-react';
 import Link from 'next/link';
 import { Order } from '@/lib/types';
@@ -164,6 +166,9 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+      {/* Admin Navigation */}
+      <AdminNavbar />
+      
       {/* Hero Header */}
       <section className="relative overflow-hidden bg-gradient-to-br from-violet-900 via-purple-900 to-fuchsia-900">
         <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-transparent to-fuchsia-900/20"></div>
@@ -279,7 +284,7 @@ export default function AdminDashboard() {
         </div>
 
         {/* Enhanced Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-12">
           {[
             {
               title: 'Product Management',
@@ -289,6 +294,26 @@ export default function AdminDashboard() {
               actions: [
                 { label: 'View Products', href: '/admin/products', icon: EyeIcon, variant: 'outline' as const },
                 { label: 'Add Product', href: '/admin/products/new', icon: PlusIcon, variant: 'primary' as const }
+              ]
+            },
+            {
+              title: 'Category Management',
+              description: 'Organize products with hierarchical categories',
+              icon: TagIcon,
+              gradient: 'from-blue-500 to-cyan-500',
+              actions: [
+                { label: 'Manage Categories', href: '/admin/categories', icon: TagIcon, variant: 'outline' as const },
+                { label: 'Add Category', href: '/admin/categories', icon: PlusIcon, variant: 'primary' as const }
+              ]
+            },
+            {
+              title: 'Data Management',
+              description: 'Import, export and migrate your store data',
+              icon: Activity,
+              gradient: 'from-orange-500 to-red-500',
+              actions: [
+                { label: 'Data Migration', href: '/admin/data', icon: Activity, variant: 'outline' as const },
+                { label: 'Import Data', href: '/admin/data', icon: PlusIcon, variant: 'primary' as const }
               ]
             },
             {

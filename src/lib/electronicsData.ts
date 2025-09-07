@@ -33,7 +33,7 @@ export const electronicsCategories: Category[] = [
     id: '5',
     name: 'Smart Home & IoT',
     description: 'Smart home devices, IoT gadgets, and home automation',
-    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=500&fit=crop',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop',
     createdAt: new Date(),
   },
   {
@@ -65,8 +65,8 @@ export const electronicsProducts: Product[] = [
     id: '1',
     name: 'iPhone 15 Pro Max',
     description: 'The most advanced iPhone yet with titanium design, A17 Pro chip, and revolutionary camera system with 5x telephoto zoom.',
-    price: 1199.99,
-    originalPrice: 1299.99,
+    price: 395997,
+    originalPrice: 428997,
     images: [
       'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=500&h=500&fit=crop',
       'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&h=500&fit=crop'
@@ -84,8 +84,8 @@ export const electronicsProducts: Product[] = [
     id: '2',
     name: 'Samsung Galaxy S24 Ultra',
     description: 'Premium Android smartphone with S Pen, 200MP camera, AI features, and titanium frame for ultimate durability.',
-    price: 1099.99,
-    originalPrice: 1199.99,
+    price: 362997,
+    originalPrice: 395997,
     images: [
       'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&h=500&fit=crop'
     ],
@@ -102,7 +102,7 @@ export const electronicsProducts: Product[] = [
     id: '3',
     name: 'iPad Pro 12.9" M2',
     description: 'The ultimate iPad experience with M2 chip, Liquid Retina XDR display, and support for Apple Pencil Pro.',
-    price: 1099.99,
+    price: 362997,
     images: [
       'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500&h=500&fit=crop'
     ],
@@ -119,8 +119,8 @@ export const electronicsProducts: Product[] = [
     id: '4',
     name: 'Google Pixel 8 Pro',
     description: 'AI-powered smartphone with advanced computational photography, Magic Eraser, and pure Android experience.',
-    price: 899.99,
-    originalPrice: 999.99,
+    price: 296997,
+    originalPrice: 329997,
     images: [
       'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&h=500&fit=crop'
     ],
@@ -139,8 +139,8 @@ export const electronicsProducts: Product[] = [
     id: '5',
     name: 'MacBook Pro 16" M3 Max',
     description: 'Professional laptop with M3 Max chip, up to 22-hour battery life, stunning Liquid Retina XDR display, and advanced thermal design.',
-    price: 2499.99,
-    originalPrice: 2699.99,
+    price: 824997,
+    originalPrice: 890997,
     images: [
       'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&h=500&fit=crop',
       'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop'
@@ -158,8 +158,8 @@ export const electronicsProducts: Product[] = [
     id: '6',
     name: 'Dell XPS 13 Plus',
     description: 'Ultra-thin laptop with 13th Gen Intel processors, InfinityEdge display, premium build quality, and exceptional performance.',
-    price: 1299.99,
-    originalPrice: 1499.99,
+    price: 428997,
+    originalPrice: 494997,
     images: [
       'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&h=500&fit=crop'
     ],
@@ -176,7 +176,7 @@ export const electronicsProducts: Product[] = [
     id: '7',
     name: 'Gaming Desktop PC - RTX 4080',
     description: 'High-performance gaming PC with RTX 4080, Intel i7-13700K, 32GB DDR5 RAM, 1TB NVMe SSD, and liquid cooling.',
-    price: 2899.99,
+    price: 956997,
     images: [
       'https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=500&h=500&fit=crop'
     ],
@@ -193,9 +193,9 @@ export const electronicsProducts: Product[] = [
     id: '8',
     name: 'Microsoft Surface Studio 2+',
     description: 'All-in-one creative powerhouse with 28" PixelSense touchscreen, Intel Core i7, and NVIDIA GeForce RTX graphics.',
-    price: 4299.99,
+    price: 1418997,
     images: [
-      'https://images.unsplash.com/photo-1527864130461-42fe0d297e88?w=500&h=500&fit=crop'
+      'https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=500&h=500&fit=crop'
     ],
     category: 'Laptops & Computers',
     stock: 3,
@@ -212,8 +212,8 @@ export const electronicsProducts: Product[] = [
     id: '9',
     name: 'AirPods Pro (3rd Generation)',
     description: 'Revolutionary spatial audio with dynamic head tracking, adaptive transparency, personalized volume, and up to 6 hours of listening time.',
-    price: 249.99,
-    originalPrice: 279.99,
+    price: 82497,
+    originalPrice: 92397,
     images: [
       'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?w=500&h=500&fit=crop',
       'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop'
@@ -231,8 +231,8 @@ export const electronicsProducts: Product[] = [
     id: '10',
     name: 'Sony WH-1000XM5',
     description: 'Industry-leading noise canceling headphones with exceptional sound quality, 30-hour battery life, and premium comfort.',
-    price: 399.99,
-    originalPrice: 449.99,
+    price: 131997,
+    originalPrice: 148497,
     images: [
       'https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500&h=500&fit=crop'
     ],
@@ -249,7 +249,7 @@ export const electronicsProducts: Product[] = [
     id: '11',
     name: 'Bose QuietComfort Ultra',
     description: 'Breakthrough spatial audio technology with world-class noise cancellation and luxurious comfort for all-day listening.',
-    price: 429.99,
+    price: 141897,
     images: [
       'https://images.unsplash.com/photo-1545127398-14699f92334b?w=500&h=500&fit=crop'
     ],
@@ -266,7 +266,7 @@ export const electronicsProducts: Product[] = [
     id: '12',
     name: 'JBL Flip 6 Portable Speaker',
     description: 'Waterproof portable Bluetooth speaker with powerful JBL Pro Sound, PartyBoost, and 12-hour playtime.',
-    price: 129.99,
+    price: 42897,
     images: [
       'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=500&fit=crop'
     ],
@@ -285,7 +285,7 @@ export const electronicsProducts: Product[] = [
     id: '13',
     name: 'PlayStation 5 Console',
     description: 'Next-gen gaming console with lightning-fast loading, haptic feedback, 3D audio, and stunning 4K graphics at 120fps.',
-    price: 499.99,
+    price: 164997,
     images: [
       'https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=500&h=500&fit=crop'
     ],
@@ -302,7 +302,7 @@ export const electronicsProducts: Product[] = [
     id: '14',
     name: 'Xbox Series X',
     description: 'The fastest, most powerful Xbox ever with 4K gaming, Smart Delivery, Quick Resume, and backwards compatibility.',
-    price: 499.99,
+    price: 164997,
     images: [
       'https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=500&h=500&fit=crop'
     ],
@@ -319,7 +319,7 @@ export const electronicsProducts: Product[] = [
     id: '15',
     name: 'Nintendo Switch OLED',
     description: 'Hybrid gaming console with vibrant 7-inch OLED screen, enhanced audio, and versatile gaming modes.',
-    price: 349.99,
+    price: 115497,
     images: [
       'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=500&h=500&fit=crop'
     ],
@@ -336,8 +336,8 @@ export const electronicsProducts: Product[] = [
     id: '16',
     name: 'SteelSeries Arctis 7P Wireless Gaming Headset',
     description: 'Premium wireless gaming headset with lossless 2.4GHz connection, DTS Headphone:X v2.0, and 24-hour battery.',
-    price: 149.99,
-    originalPrice: 179.99,
+    price: 49497,
+    originalPrice: 59397,
     images: [
       'https://images.unsplash.com/photo-1559406041-c7d2b2e98690?w=500&h=500&fit=crop'
     ],
@@ -356,8 +356,8 @@ export const electronicsProducts: Product[] = [
     id: '17',
     name: 'Amazon Echo Dot (5th Gen)',
     description: 'Smart speaker with Alexa, improved audio quality, temperature sensor, and seamless smart home control.',
-    price: 49.99,
-    originalPrice: 59.99,
+    price: 16497,
+    originalPrice: 19797,
     images: [
       'https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?w=500&h=500&fit=crop'
     ],
@@ -374,9 +374,9 @@ export const electronicsProducts: Product[] = [
     id: '18',
     name: 'Philips Hue Smart Bulb Starter Kit',
     description: 'Color-changing smart bulbs with app control, voice activation, millions of colors, and sync with entertainment.',
-    price: 199.99,
+    price: 65997,
     images: [
-      'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=500&h=500&fit=crop'
+      'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=500&h=500&fit=crop'
     ],
     category: 'Smart Home & IoT',
     stock: 31,
@@ -391,8 +391,8 @@ export const electronicsProducts: Product[] = [
     id: '19',
     name: 'Ring Video Doorbell Pro 2',
     description: 'Advanced video doorbell with 1536p HD video, 3D motion detection, enhanced WiFi, and Pre-Roll technology.',
-    price: 249.99,
-    originalPrice: 279.99,
+    price: 82497,
+    originalPrice: 92397,
     images: [
       'https://images.unsplash.com/photo-1590736969955-71cc94901144?w=500&h=500&fit=crop'
     ],
@@ -409,7 +409,7 @@ export const electronicsProducts: Product[] = [
     id: '20',
     name: 'Nest Thermostat',
     description: 'Smart thermostat that learns your schedule, saves energy, and can be controlled from anywhere with your phone.',
-    price: 179.99,
+    price: 59397,
     images: [
       'https://images.unsplash.com/photo-1556075798-4825dfaaf498?w=500&h=500&fit=crop'
     ],
@@ -428,7 +428,7 @@ export const electronicsProducts: Product[] = [
     id: '21',
     name: 'Canon EOS R5 Mirrorless Camera',
     description: 'Professional full-frame mirrorless camera with 45MP sensor, 8K video recording, and advanced dual pixel autofocus.',
-    price: 3899.99,
+    price: 1286997,
     images: [
       'https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?w=500&h=500&fit=crop'
     ],
@@ -445,7 +445,7 @@ export const electronicsProducts: Product[] = [
     id: '22',
     name: 'Sony Alpha 7R V',
     description: 'High-resolution full-frame mirrorless camera with 61MP sensor, AI-powered autofocus, and 8K video.',
-    price: 3899.99,
+    price: 1286997,
     images: [
       'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=500&h=500&fit=crop'
     ],
@@ -462,8 +462,8 @@ export const electronicsProducts: Product[] = [
     id: '23',
     name: 'DJI Mini 3 Pro Drone',
     description: 'Compact drone with 4K/60fps video, intelligent flight modes, obstacle avoidance, and 34-minute flight time.',
-    price: 759.99,
-    originalPrice: 829.99,
+    price: 250797,
+    originalPrice: 273897,
     images: [
       'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=500&h=500&fit=crop'
     ],
@@ -480,8 +480,8 @@ export const electronicsProducts: Product[] = [
     id: '24',
     name: 'GoPro HERO12 Black',
     description: 'Ultimate action camera with HyperSmooth 6.0 stabilization, 5.3K video, and enhanced low-light performance.',
-    price: 399.99,
-    originalPrice: 449.99,
+    price: 131997,
+    originalPrice: 148497,
     images: [
       'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=500&fit=crop'
     ],
@@ -500,8 +500,8 @@ export const electronicsProducts: Product[] = [
     id: '25',
     name: 'Apple Watch Series 9',
     description: 'Most advanced Apple Watch with S9 chip, Double Tap gesture, all-day battery life, and comprehensive health tracking.',
-    price: 399.99,
-    originalPrice: 429.99,
+    price: 131997,
+    originalPrice: 141897,
     images: [
       'https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=500&h=500&fit=crop'
     ],
@@ -518,7 +518,7 @@ export const electronicsProducts: Product[] = [
     id: '26',
     name: 'Samsung Galaxy Watch6 Classic',
     description: 'Premium smartwatch with rotating bezel, advanced health monitoring, sleep tracking, and Wear OS powered by Samsung.',
-    price: 429.99,
+    price: 141897,
     images: [
       'https://images.unsplash.com/photo-1579586337278-3f436f0c4793?w=500&h=500&fit=crop'
     ],
@@ -535,7 +535,7 @@ export const electronicsProducts: Product[] = [
     id: '27',
     name: 'Garmin Fenix 7X Solar',
     description: 'Premium multisport GPS watch with solar charging, topographic maps, and up to 28 days battery life.',
-    price: 749.99,
+    price: 247497,
     images: [
       'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&h=500&fit=crop'
     ],
@@ -552,8 +552,8 @@ export const electronicsProducts: Product[] = [
     id: '28',
     name: 'Fitbit Charge 6',
     description: 'Advanced fitness tracker with built-in GPS, heart rate monitoring, stress management, and 7-day battery life.',
-    price: 159.99,
-    originalPrice: 179.99,
+    price: 52797,
+    originalPrice: 59397,
     images: [
       'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?w=500&h=500&fit=crop'
     ],
@@ -572,8 +572,8 @@ export const electronicsProducts: Product[] = [
     id: '29',
     name: 'Samsung 65" Neo QLED 8K Smart TV',
     description: 'Stunning 8K resolution with Quantum Matrix Technology, Object Tracking Sound Pro, and AI-powered upscaling.',
-    price: 2999.99,
-    originalPrice: 3499.99,
+    price: 989997,
+    originalPrice: 1154997,
     images: [
       'https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=500&h=500&fit=crop'
     ],
@@ -590,8 +590,8 @@ export const electronicsProducts: Product[] = [
     id: '30',
     name: 'LG 77" OLED evo C3 Smart TV',
     description: 'Premium OLED TV with perfect blacks, infinite contrast, Dolby Vision IQ, and webOS smart platform.',
-    price: 3299.99,
-    originalPrice: 3799.99,
+    price: 1088997,
+    originalPrice: 1253697,
     images: [
       'https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=500&h=500&fit=crop'
     ],
@@ -608,7 +608,7 @@ export const electronicsProducts: Product[] = [
     id: '31',
     name: 'Apple TV 4K (3rd Generation)',
     description: 'Stream 4K HDR content with A15 Bionic chip, Dolby Vision, spatial audio, and Siri Remote with touch-enabled clickpad.',
-    price: 179.99,
+    price: 59397,
     images: [
       'https://images.unsplash.com/photo-1616353071752-1c3c6c2b5dc5?w=500&h=500&fit=crop'
     ],
@@ -625,8 +625,8 @@ export const electronicsProducts: Product[] = [
     id: '32',
     name: 'Sonos Arc Soundbar',
     description: 'Premium smart soundbar with Dolby Atmos, voice control, Trueplay tuning, and seamless streaming integration.',
-    price: 899.99,
-    originalPrice: 999.99,
+    price: 296997,
+    originalPrice: 329997,
     images: [
       'https://images.unsplash.com/photo-1545454675-3531b543be5d?w=500&h=500&fit=crop'
     ],

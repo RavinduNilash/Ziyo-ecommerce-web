@@ -34,5 +34,26 @@ try {
   console.warn('Firebase initialization failed. Using mock services.', error);
 }
 
+// Helper function to check if Firebase is available and properly configured
+export const isFirebaseAvailable = (): boolean => {
+  return db !== null && auth !== null && firebaseConfig.apiKey !== 'demo-api-key';
+};
+
+// Helper function to safely get Firestore instance
+export const getSafeFirestore = () => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase not available');
+  }
+  return db!;
+};
+
+// Helper function to safely get Storage instance
+export const getSafeStorage = () => {
+  if (!isFirebaseAvailable()) {
+    throw new Error('Firebase not available');
+  }
+  return storage!;
+};
+
 export { auth, db, storage };
 export default app;

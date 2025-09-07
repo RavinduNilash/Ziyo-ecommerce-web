@@ -44,20 +44,26 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center">
-          <ShoppingBag className="mx-auto h-24 w-24 text-gray-400" />
-          <h1 className="mt-6 text-3xl font-bold text-gray-900">Your cart is empty</h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Looks like you haven&apos;t added any items to your cart yet.
-          </p>
-          <div className="mt-8">
-            <Link href="/products">
-              <Button size="lg">
-                <ArrowLeft className="mr-2 h-5 w-5" />
-                Continue Shopping
-              </Button>
-            </Link>
+      <div className="min-h-screen" style={{ backgroundColor: '#FFFDF2' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <ShoppingBag className="mx-auto h-24 w-24" style={{ color: '#AAAAAA' }} />
+            <h1 className="mt-6 text-3xl font-bold" style={{ color: '#000000' }}>Your cart is empty</h1>
+            <p className="mt-4 text-lg" style={{ color: '#AAAAAA' }}>
+              Looks like you haven&apos;t added any items to your cart yet.
+            </p>
+            <div className="mt-8">
+              <Link href="/products">
+                <Button
+                  size="lg"
+                  className="px-8 py-3 text-white font-medium rounded-lg transition-all duration-200 hover:opacity-90"
+                  style={{ backgroundColor: '#000000' }}
+                >
+                  <ArrowLeft className="mr-2 h-5 w-5" />
+                  Continue Shopping
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -65,30 +71,40 @@ export default function CartPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
-        <p className="mt-2 text-gray-600">
-          {items.length} {items.length === 1 ? 'item' : 'items'} in your cart
-        </p>
-      </div>
+    <div className="min-h-screen" style={{ backgroundColor: '#FFFDF2' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold" style={{ color: '#000000' }}>Shopping Cart</h1>
+          <p className="mt-2" style={{ color: '#AAAAAA' }}>
+            {items.length} {items.length === 1 ? 'item' : 'items'} in your cart
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2 space-y-4">
           <div className="flex justify-between items-center">
-            <h2 className="text-xl font-semibold">Items</h2>
+            <h2 className="text-xl font-semibold" style={{ color: '#000000' }}>Items</h2>
             <Button
               variant="outline"
               onClick={handleClearCart}
-              className="text-red-600 hover:text-red-700"
+              className="border-2 px-4 py-2 rounded-lg transition-all duration-200 hover:opacity-80"
+              style={{
+                borderColor: '#000000',
+                color: '#000000',
+                backgroundColor: 'transparent'
+              }}
             >
               Clear Cart
             </Button>
           </div>
 
           {items.map((item) => (
-            <Card key={item.id}>
+            <Card
+              key={item.id}
+              className="border-0 shadow-md rounded-lg overflow-hidden"
+              style={{ backgroundColor: 'white' }}
+            >
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   {/* Product Image */}
@@ -106,14 +122,15 @@ export default function CartPage() {
                   <div className="flex-1 min-w-0">
                     <Link
                       href={`/products/${item.productId}`}
-                      className="text-lg font-medium text-gray-900 hover:text-blue-600"
+                      className="text-lg font-medium transition-colors duration-200 hover:opacity-70"
+                      style={{ color: '#000000' }}
                     >
                       {item.product.name}
                     </Link>
-                    <p className="text-gray-600 text-sm mt-1 line-clamp-2">
+                    <p className="text-sm mt-1 line-clamp-2" style={{ color: '#AAAAAA' }}>
                       {item.product.description}
                     </p>
-                    <p className="text-gray-500 text-sm mt-1">
+                    <p className="text-sm mt-1" style={{ color: '#AAAAAA' }}>
                       Category: {item.product.category}
                     </p>
                   </div>
@@ -125,10 +142,16 @@ export default function CartPage() {
                       size="sm"
                       onClick={() => handleQuantityChange(item.productId, item.quantity - 1)}
                       disabled={item.quantity <= 1 || updatingItems.has(item.productId)}
+                      className="border rounded-md p-1 transition-all duration-200 hover:opacity-80"
+                      style={{
+                        borderColor: '#AAAAAA',
+                        color: '#000000',
+                        backgroundColor: 'transparent'
+                      }}
                     >
                       <Minus className="h-4 w-4" />
                     </Button>
-                    <span className="min-w-[2rem] text-center font-medium">
+                    <span className="min-w-[2rem] text-center font-medium" style={{ color: '#000000' }}>
                       {item.quantity}
                     </span>
                     <Button
@@ -136,6 +159,12 @@ export default function CartPage() {
                       size="sm"
                       onClick={() => handleQuantityChange(item.productId, item.quantity + 1)}
                       disabled={updatingItems.has(item.productId)}
+                      className="border rounded-md p-1 transition-all duration-200 hover:opacity-80"
+                      style={{
+                        borderColor: '#AAAAAA',
+                        color: '#000000',
+                        backgroundColor: 'transparent'
+                      }}
                     >
                       <Plus className="h-4 w-4" />
                     </Button>
@@ -143,17 +172,21 @@ export default function CartPage() {
 
                   {/* Price and Remove */}
                   <div className="text-right">
-                    <p className="text-lg font-semibold">
+                    <p className="text-lg font-semibold" style={{ color: '#000000' }}>
                       {formatPrice(item.product.price * item.quantity)}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm" style={{ color: '#AAAAAA' }}>
                       {formatPrice(item.product.price)} each
                     </p>
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => handleRemoveItem(item.productId, item.product.name)}
-                      className="mt-2 text-red-600 hover:text-red-700"
+                      className="mt-2 p-1 rounded-md transition-all duration-200 hover:opacity-80"
+                      style={{
+                        color: '#000000',
+                        backgroundColor: 'transparent'
+                      }}
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -166,40 +199,43 @@ export default function CartPage() {
 
         {/* Order Summary */}
         <div className="lg:col-span-1">
-          <Card className="sticky top-4">
+          <Card
+            className="sticky top-4 border-0 shadow-md rounded-lg"
+            style={{ backgroundColor: 'white' }}
+          >
             <CardContent className="p-6">
-              <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
+              <h2 className="text-xl font-semibold mb-4" style={{ color: '#000000' }}>Order Summary</h2>
               
               <div className="space-y-3 mb-4">
                 <div className="flex justify-between">
-                  <span>Subtotal</span>
-                  <span>{formatPrice(total)}</span>
+                  <span style={{ color: '#AAAAAA' }}>Subtotal</span>
+                  <span style={{ color: '#000000' }}>{formatPrice(total)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Shipping</span>
+                  <span style={{ color: '#AAAAAA' }}>Shipping</span>
                   <span>
                     {shipping === 0 ? (
-                      <span className="text-green-600">Free</span>
+                      <span style={{ color: '#000000' }}>Free</span>
                     ) : (
-                      formatPrice(shipping)
+                      <span style={{ color: '#000000' }}>{formatPrice(shipping)}</span>
                     )}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Tax</span>
-                  <span>{formatPrice(tax)}</span>
+                  <span style={{ color: '#AAAAAA' }}>Tax</span>
+                  <span style={{ color: '#000000' }}>{formatPrice(tax)}</span>
                 </div>
-                <div className="border-t pt-3">
+                <div className="pt-3" style={{ borderTop: '1px solid #AAAAAA' }}>
                   <div className="flex justify-between text-lg font-semibold">
-                    <span>Total</span>
-                    <span>{formatPrice(finalTotal)}</span>
+                    <span style={{ color: '#000000' }}>Total</span>
+                    <span style={{ color: '#000000' }}>{formatPrice(finalTotal)}</span>
                   </div>
                 </div>
               </div>
 
               {total < 50 && (
-                <div className="mb-4 p-3 bg-blue-50 rounded-md">
-                  <p className="text-sm text-blue-800">
+                <div className="mb-4 p-3 rounded-md" style={{ backgroundColor: '#FFFDF2', border: '1px solid #AAAAAA' }}>
+                  <p className="text-sm" style={{ color: '#000000' }}>
                     Add {formatPrice(50 - total)} more for free shipping!
                   </p>
                 </div>
@@ -207,24 +243,55 @@ export default function CartPage() {
 
               <div className="space-y-3">
                 <Link href="/checkout">
-                  <Button className="w-full" size="lg">
+                  <Button
+                    className="w-full px-6 py-3 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                    size="lg"
+                    style={{ backgroundColor: '#000000' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#333333';
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = '#000000';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
                     Proceed to Checkout
                   </Button>
                 </Link>
                 <Link href="/products">
-                  <Button variant="outline" className="w-full">
+                  <Button
+                    variant="outline"
+                    className="w-full border-2 px-6 py-3 font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
+                    style={{
+                      borderColor: '#000000',
+                      color: '#000000',
+                      backgroundColor: 'transparent'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#000000';
+                      e.currentTarget.style.color = '#FFFFFF';
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = '#000000';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
                     Continue Shopping
                   </Button>
                 </Link>
               </div>
 
               <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm" style={{ color: '#AAAAAA' }}>
                   Secure checkout powered by SSL encryption
                 </p>
               </div>
             </CardContent>
           </Card>
+        </div>
         </div>
       </div>
     </div>

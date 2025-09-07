@@ -34,14 +34,14 @@ export default function WishlistPage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gray-50 py-8">
+      <div className="min-h-screen py-8" style={{ backgroundColor: '#FFFDF2' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <HeartIcon className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-            <h1 className="text-3xl font-bold text-gray-900 mb-4">My Wishlist</h1>
-            <p className="text-lg text-gray-600 mb-8">Sign in to view your saved items</p>
+            <HeartIcon className="mx-auto h-12 w-12 mb-4" style={{ color: '#AAAAAA' }} />
+            <h1 className="text-3xl font-bold text-black mb-4">My Wishlist</h1>
+            <p className="text-lg mb-8" style={{ color: '#AAAAAA' }}>Sign in to view your saved items</p>
             <Link href="/login">
-              <Button size="lg">Sign In</Button>
+              <Button size="lg" className="bg-black hover:bg-gray-800 text-white">Sign In</Button>
             </Link>
           </div>
         </div>
@@ -50,13 +50,13 @@ export default function WishlistPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen py-8" style={{ backgroundColor: '#FFFDF2' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">My Wishlist</h1>
-            <p className="mt-2 text-gray-600">
+            <h1 className="text-3xl font-bold text-black">My Wishlist</h1>
+            <p className="mt-2" style={{ color: '#AAAAAA' }}>
               {items.length === 0 ? 'No saved items' : `${items.length} ${items.length === 1 ? 'item' : 'items'} saved`}
             </p>
           </div>
@@ -64,6 +64,7 @@ export default function WishlistPage() {
             <div className="mt-4 sm:mt-0 space-x-3">
               <Button
                 variant="outline"
+                className="border-gray-300 text-black hover:bg-gray-50"
                 onClick={() => {
                   if (window.confirm('Are you sure you want to clear your entire wishlist?')) {
                     clearWishlist();
@@ -80,20 +81,20 @@ export default function WishlistPage() {
         {/* Empty State */}
         {items.length === 0 ? (
           <div className="text-center py-12">
-            <HeartIcon className="mx-auto h-16 w-16 text-gray-300 mb-6" />
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Your wishlist is empty</h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-md mx-auto">
+            <HeartIcon className="mx-auto h-16 w-16 mb-6" style={{ color: '#AAAAAA' }} />
+            <h2 className="text-2xl font-semibold text-black mb-4">Your wishlist is empty</h2>
+            <p className="text-lg mb-8 max-w-md mx-auto" style={{ color: '#AAAAAA' }}>
               Explore our products and save your favorites for later by clicking the heart icon.
             </p>
             <Link href="/products">
-              <Button size="lg">Start Shopping</Button>
+              <Button size="lg" className="bg-black hover:bg-gray-800 text-white">Start Shopping</Button>
             </Link>
           </div>
         ) : (
           /* Wishlist Items */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {items.map((product) => (
-              <Card key={product.id} className="group relative overflow-hidden">
+              <Card key={product.id} className="group relative overflow-hidden bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="aspect-square overflow-hidden">
                   <Link href={`/products/${product.id}`}>
                     <Image
@@ -116,22 +117,22 @@ export default function WishlistPage() {
 
                 <div className="p-4">
                   <Link href={`/products/${product.id}`}>
-                    <h3 className="font-medium text-gray-900 mb-2 hover:text-blue-600 transition-colors">
+                    <h3 className="font-medium text-black mb-2 hover:text-gray-700 transition-colors">
                       {product.name}
                     </h3>
                   </Link>
                   
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  <p className="text-sm mb-3 line-clamp-2" style={{ color: '#AAAAAA' }}>
                     {product.description}
                   </p>
                   
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-lg font-bold text-black">
                       ${product.price.toFixed(2)}
                     </span>
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                      product.stock > 0 
-                        ? 'bg-green-100 text-green-800' 
+                      product.stock > 0
+                        ? 'bg-green-100 text-green-800'
                         : 'bg-red-100 text-red-800'
                     }`}>
                       {product.stock > 0 ? 'In Stock' : 'Out of Stock'}
@@ -142,7 +143,7 @@ export default function WishlistPage() {
                     <Button
                       onClick={() => handleMoveToCart(product)}
                       disabled={product.stock === 0}
-                      className="w-full"
+                      className="w-full bg-black hover:bg-gray-800 text-white"
                       size="sm"
                     >
                       <ShoppingCartIcon className="w-4 h-4 mr-2" />
@@ -151,13 +152,14 @@ export default function WishlistPage() {
                     
                     <div className="grid grid-cols-2 gap-2">
                       <Link href={`/products/${product.id}`}>
-                        <Button variant="outline" size="sm" className="w-full">
+                        <Button variant="outline" size="sm" className="w-full border-gray-300 text-black hover:bg-gray-50">
                           View Details
                         </Button>
                       </Link>
                       <Button
                         variant="outline"
                         size="sm"
+                        className="border-gray-300 text-black hover:bg-gray-50"
                         onClick={() => handleAddToCart(product)}
                         disabled={product.stock === 0}
                       >
@@ -175,7 +177,7 @@ export default function WishlistPage() {
         {items.length > 0 && (
           <div className="mt-12 text-center">
             <Link href="/products">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="border-gray-300 text-black hover:bg-gray-50">
                 Continue Shopping
               </Button>
             </Link>

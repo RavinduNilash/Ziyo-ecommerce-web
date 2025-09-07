@@ -37,47 +37,52 @@ export default function CategoriesPage() {
   }, [searchQuery, categories]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-violet-900 via-purple-900 to-fuchsia-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-violet-900/20 via-transparent to-fuchsia-900/20"></div>
+    <div className="min-h-screen" style={{ backgroundColor: '#FFFDF2' }}>
+      {/* Hero Section - Smaller */}
+      <section className="relative overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black to-black/80"></div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        {/* Subtle decorative elements */}
+        <div className="absolute inset-0 overflow-hidden opacity-20">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gray-600 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gray-600 rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-violet-500/10 border border-violet-300/20 rounded-full text-violet-200 text-sm font-medium mb-8 backdrop-blur-sm animate-pulse">
-              <TrendingUp className="h-4 w-4 mr-2" />
+            <div className="inline-flex items-center px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white text-sm font-medium mb-4">
+              <TrendingUp className="h-4 w-4 mr-2" style={{ color: '#AAAAAA' }} />
               Discover Our Collections
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-violet-100 to-white bg-clip-text text-transparent mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
               Shop by Category
             </h1>
             
-            <p className="text-xl md:text-2xl mb-12 text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed" style={{ color: '#AAAAAA' }}>
               Explore our carefully curated collections designed for every lifestyle and passion.
-              <span className="block mt-2 text-violet-300">Find exactly what you&apos;re looking for.</span>
             </p>
 
             {/* Search Section */}
-            <div className="max-w-2xl mx-auto mb-8">
+            <div className="max-w-2xl mx-auto">
               <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 rounded-2xl blur-lg group-focus-within:blur-xl transition-all duration-300"></div>
                 <div className="relative">
-                  <div className="flex items-center bg-white/10 backdrop-blur-sm border-2 border-white/20 focus-within:border-violet-300 focus-within:ring-4 focus-within:ring-violet-100/20 rounded-2xl h-14 shadow-2xl">
-                    <Search className="w-6 h-6 text-white/70 ml-4" />
+                  <div className="flex items-center bg-white/10 backdrop-blur-sm border border-white/20 focus-within:border-white/40 rounded-xl h-12 shadow-lg">
+                    <Search className="w-5 h-5 ml-4" style={{ color: '#AAAAAA' }} />
                     <input
                       type="text"
                       placeholder="Search categories..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="flex-1 bg-transparent text-white placeholder:text-white/60 border-0 outline-none px-4 py-3 text-lg"
+                      className="flex-1 bg-transparent text-white placeholder-gray-400 border-0 outline-none px-4 py-3 text-base"
                     />
                     {searchQuery && (
                       <button
                         onClick={() => setSearchQuery('')}
-                        className="p-2 text-white/70 hover:text-white mr-2"
+                        className="p-2 hover:text-white mr-2"
+                        style={{ color: '#AAAAAA' }}
                       >
-                        <X className="w-5 h-5" />
+                        <X className="w-4 h-4" />
                       </button>
                     )}
                   </div>
@@ -86,10 +91,6 @@ export default function CategoriesPage() {
             </div>
           </div>
         </div>
-
-        {/* Floating Elements */}
-        <div className="absolute top-1/4 left-10 w-20 h-20 bg-violet-500/10 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
       </section>
 
       {/* Categories Section */}
@@ -98,39 +99,39 @@ export default function CategoriesPage() {
           {/* Controls */}
           <div className="flex flex-col sm:flex-row justify-between items-center mb-12 gap-6">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-2">
+              <h2 className="text-3xl font-bold text-black mb-2">
                 All Categories
               </h2>
-              <p className="text-slate-600">
+              <p style={{ color: '#AAAAAA' }}>
                 {filteredCategories.length} {filteredCategories.length === 1 ? 'category' : 'categories'} found
               </p>
             </div>
             
             <div className="flex items-center space-x-4">
-              <div className="flex items-center bg-slate-100 rounded-2xl p-1">
+              <div className="flex items-center bg-gray-100 rounded-xl p-1">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-3 rounded-xl transition-all duration-300 ${
+                  className={`p-3 rounded-lg transition-all duration-300 ${
                     viewMode === 'grid'
-                      ? 'bg-white shadow-lg text-violet-600'
-                      : 'text-slate-600 hover:text-violet-600'
+                      ? 'bg-white shadow-lg text-black'
+                      : 'text-gray-600 hover:text-black'
                   }`}
                 >
                   <Grid className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-3 rounded-xl transition-all duration-300 ${
+                  className={`p-3 rounded-lg transition-all duration-300 ${
                     viewMode === 'list'
-                      ? 'bg-white shadow-lg text-violet-600'
-                      : 'text-slate-600 hover:text-violet-600'
+                      ? 'bg-white shadow-lg text-black'
+                      : 'text-gray-600 hover:text-black'
                   }`}
                 >
                   <List className="h-5 w-5" />
                 </button>
               </div>
               
-              <Button variant="outline" className="border-2 border-slate-200 text-slate-600 hover:border-violet-300 hover:text-violet-600 rounded-2xl px-6">
+              <Button variant="outline" className="border-2 border-gray-300 text-black hover:border-black hover:text-black rounded-xl px-6">
                 <Filter className="h-4 w-4 mr-2" />
                 Filter
               </Button>
@@ -169,14 +170,14 @@ export default function CategoriesPage() {
           {/* Empty State */}
           {!loading && filteredCategories.length === 0 && (
             <div className="text-center py-20">
-              <Package className="h-24 w-24 text-slate-400 mx-auto mb-6" />
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">No categories found</h3>
-              <p className="text-slate-600 mb-8 max-w-md mx-auto">
+              <Package className="h-24 w-24 mx-auto mb-6" style={{ color: '#AAAAAA' }} />
+              <h3 className="text-2xl font-bold text-black mb-4">No categories found</h3>
+              <p className="mb-8 max-w-md mx-auto" style={{ color: '#AAAAAA' }}>
                 We couldn&apos;t find any categories matching your search. Try adjusting your search terms.
               </p>
-              <Button 
+              <Button
                 onClick={() => setSearchQuery('')}
-                className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-2xl px-8 py-3"
+                className="bg-black text-white rounded-xl px-8 py-3 hover:bg-gray-800"
               >
                 Clear Search
               </Button>
@@ -186,44 +187,44 @@ export default function CategoriesPage() {
       </section>
 
       {/* Featured Section */}
-      <section className="py-20 bg-gradient-to-br from-violet-50 to-fuchsia-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 bg-violet-100 rounded-full text-violet-700 text-sm font-medium mb-4">
-              <Sparkles className="h-4 w-4 mr-2" />
+            <div className="inline-flex items-center px-4 py-2 bg-gray-200 rounded-full text-black text-sm font-medium mb-4">
+              <Sparkles className="h-4 w-4 mr-2" style={{ color: '#AAAAAA' }} />
               Why Shop by Category?
             </div>
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl font-bold text-black mb-4">
               Curated Collections
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl max-w-2xl mx-auto" style={{ color: '#AAAAAA' }}>
               Our categories are carefully organized to help you discover products that match your interests and needs.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-white rounded-3xl shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-br from-violet-500 to-violet-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-200">
+              <div className="w-16 h-16 bg-black rounded-xl flex items-center justify-center mx-auto mb-6">
                 <Search className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Easy Discovery</h3>
-              <p className="text-slate-600">Find products quickly by browsing our organized categories and collections.</p>
+              <h3 className="text-xl font-bold text-black mb-4">Easy Discovery</h3>
+              <p style={{ color: '#AAAAAA' }}>Find products quickly by browsing our organized categories and collections.</p>
             </div>
             
-            <div className="text-center p-8 bg-white rounded-3xl shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-fuchsia-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-200">
+              <div className="w-16 h-16 bg-black rounded-xl flex items-center justify-center mx-auto mb-6">
                 <TrendingUp className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Trending Items</h3>
-              <p className="text-slate-600">Discover what&apos;s popular and trending in each category.</p>
+              <h3 className="text-xl font-bold text-black mb-4">Trending Items</h3>
+              <p style={{ color: '#AAAAAA' }}>Discover what&apos;s popular and trending in each category.</p>
             </div>
             
-            <div className="text-center p-8 bg-white rounded-3xl shadow-lg">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg border border-gray-200">
+              <div className="w-16 h-16 bg-black rounded-xl flex items-center justify-center mx-auto mb-6">
                 <Package className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Quality Assured</h3>
-              <p className="text-slate-600">Every product in our categories meets our high quality standards.</p>
+              <h3 className="text-xl font-bold text-black mb-4">Quality Assured</h3>
+              <p style={{ color: '#AAAAAA' }}>Every product in our categories meets our high quality standards.</p>
             </div>
           </div>
         </div>
@@ -241,9 +242,9 @@ interface CategoryCardProps {
 const CategoryCard = ({ category, viewMode, index }: CategoryCardProps) => {
   if (viewMode === 'list') {
     return (
-      <div className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 border border-slate-100 overflow-hidden">
+      <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-gray-200 overflow-hidden">
         <div className="flex items-center p-6">
-          <div className="relative w-24 h-24 rounded-2xl overflow-hidden mr-6 flex-shrink-0">
+          <div className="relative w-24 h-24 rounded-xl overflow-hidden mr-6 flex-shrink-0">
             <Image
               src={category.image || '/placeholder-category.jpg'}
               alt={category.name}
@@ -253,15 +254,15 @@ const CategoryCard = ({ category, viewMode, index }: CategoryCardProps) => {
           </div>
           
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-slate-900 group-hover:text-violet-600 transition-colors duration-300 mb-2">
+            <h3 className="text-2xl font-bold text-black group-hover:text-gray-800 transition-colors duration-300 mb-2">
               {category.name}
             </h3>
-            <p className="text-slate-600 mb-4">{category.description}</p>
+            <p className="mb-4" style={{ color: '#AAAAAA' }}>{category.description}</p>
             
             <Link href={`/products?category=${category.name}`}>
-              <Button 
-                variant="outline" 
-                className="border-2 border-violet-200 text-violet-600 hover:bg-violet-50 rounded-2xl"
+              <Button
+                variant="outline"
+                className="border-2 border-gray-300 text-black hover:bg-gray-50 hover:border-black rounded-xl"
               >
                 Explore Category
                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -274,8 +275,8 @@ const CategoryCard = ({ category, viewMode, index }: CategoryCardProps) => {
   }
 
   return (
-    <div 
-      className="group bg-white rounded-3xl shadow-lg hover:shadow-2xl hover:shadow-violet-500/10 transition-all duration-500 transform hover:-translate-y-2 border border-slate-100 overflow-hidden"
+    <div
+      className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-200 overflow-hidden"
       style={{
         animationDelay: `${index * 100}ms`,
       }}
@@ -296,13 +297,13 @@ const CategoryCard = ({ category, viewMode, index }: CategoryCardProps) => {
       </div>
       
       <div className="p-6">
-        <h3 className="text-xl font-bold text-slate-900 group-hover:text-violet-600 transition-colors duration-300 mb-2">
+        <h3 className="text-xl font-bold text-black group-hover:text-gray-800 transition-colors duration-300 mb-2">
           {category.name}
         </h3>
-        <p className="text-slate-600 mb-6 line-clamp-2">{category.description}</p>
+        <p className="mb-6 line-clamp-2" style={{ color: '#AAAAAA' }}>{category.description}</p>
         
         <Link href={`/products?category=${category.name}`} className="block">
-          <Button className="w-full bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white rounded-2xl font-semibold py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+          <Button className="w-full bg-black hover:bg-gray-800 text-white rounded-xl font-semibold py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
             Explore Category
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

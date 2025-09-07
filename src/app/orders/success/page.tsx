@@ -1,20 +1,39 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 import { Card, CardContent } from '@/components/ui/Card';
-import { CheckCircle, Package, Truck, Clock, ArrowRight } from 'lucide-react';
+import { CheckCircle, Package, Truck, Clock, ArrowRight, CreditCard, Banknote } from 'lucide-react';
+
+interface OrderData {
+  id: string;
+  paymentMethod: 'cod' | 'bank_transfer';
+  total: number;
+  status: string;
+  paymentStatus: string;
+  createdAt: string;
+}
 
 export default function OrderSuccessPage() {
+  const [latestOrder, setLatestOrder] = useState<OrderData | null>(null);
+  
   // Generate a random order number for demo
   const orderNumber = `ZY${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
   const estimatedDelivery = new Date();
   estimatedDelivery.setDate(estimatedDelivery.getDate() + 5); // 5 days from now
 
   useEffect(() => {
-    // Clear any checkout-related data from localStorage if needed
-    // This is where you might clear temporary checkout data
+    // Get the latest order from localStorage
+    try {
+      const orders = JSON.parse(localStorage.getItem('demo-orders') || '[]');
+      if (orders.length > 0) {
+        const latest = orders[orders.length - 1];
+        setLatestOrder(latest);
+      }
+    } catch (error) {
+      console.error('Error fetching order data:', error);
+    }
   }, []);
 
   return (
@@ -30,8 +49,58 @@ export default function OrderSuccessPage() {
           Order Placed Successfully!
         </h1>
         <p className="text-lg text-gray-600 mb-8">
-          Thank you for your purchase. Your order has been confirmed and is being processed.
+          {latestOrder?.paymentMethod === 'cod' 
+            ? "Thank you for your order! Pay when you receive your items."
+            : latestOrder?.paymentMethod === 'bank_transfer'
+            ? "Thank you for your order! Please complete the bank transfer within 24 hours."
+            : "Thank you for your purchase. Your order has been confirmed and is being processed."
+          }
         </p>
+
+        {/* Payment Method Alert */}
+        {latestOrder?.paymentMethod === 'bank_transfer' && (
+          <div className="max-w-2xl mx-auto mb-8">
+            <Card className="border-blue-200 bg-blue-50">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-3">
+                  <CreditCard className="h-6 w-6 text-blue-600 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-blue-900 mb-2">Complete Your Bank Transfer</h3>
+                    <div className="text-sm text-blue-800 space-y-1">
+                      <p><strong>Bank:</strong> Commercial Bank of Ceylon</p>
+                      <p><strong>Account Name:</strong> Ziyo Electronics Pvt Ltd</p>
+                      <p><strong>Account Number:</strong> 8001234567890</p>
+                      <p><strong>Reference:</strong> Order #{latestOrder.id}</p>
+                    </div>
+                    <p className="text-xs text-blue-700 mt-3 font-medium">
+                      Please send the transfer receipt to support@ziyo.lk or WhatsApp +94 77 123 4567
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {latestOrder?.paymentMethod === 'cod' && (
+          <div className="max-w-2xl mx-auto mb-8">
+            <Card className="border-orange-200 bg-orange-50">
+              <CardContent className="p-6">
+                <div className="flex items-start space-x-3">
+                  <Banknote className="h-6 w-6 text-orange-600 mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-orange-900 mb-2">Cash on Delivery Instructions</h3>
+                    <div className="text-sm text-orange-800">
+                      <p>• Please have the exact amount ready when receiving your order</p>
+                      <p>• You can inspect the items before making payment</p>
+                      <p>• Our delivery person will collect the payment upon delivery</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
 
         {/* Order Details Card */}
         <Card className="max-w-2xl mx-auto mb-8">
@@ -51,7 +120,23 @@ export default function OrderSuccessPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Payment Method:</span>
-                    <span className="font-medium">Cash on Delivery</span>
+                    <span className="font-medium">
+                      {latestOrder?.paymentMethod === 'cod' ? 'Cash on Delivery' : 
+                       latestOrder?.paymentMethod === 'bank_transfer' ? 'Bank Transfer' : 
+                       'Cash on Delivery'}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Payment Status:</span>
+                    <span className={`font-medium ${
+                      latestOrder?.paymentMethod === 'cod' ? 'text-orange-600' : 
+                      latestOrder?.paymentMethod === 'bank_transfer' ? 'text-blue-600' : 
+                      'text-gray-600'
+                    }`}>
+                      {latestOrder?.paymentMethod === 'cod' ? 'Pay on Delivery' : 
+                       latestOrder?.paymentMethod === 'bank_transfer' ? 'Awaiting Transfer' : 
+                       'Pending'}
+                    </span>
                   </div>
                 </div>
               </div>

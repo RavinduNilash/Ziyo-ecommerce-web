@@ -7,7 +7,7 @@ import { formatPrice } from '@/lib/utils';
 import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/Button';
 import { WishlistButton } from '@/components/ui/WishlistButton';
-import { ShoppingCart, Star, Eye, Zap, Package } from 'lucide-react';
+import { ShoppingCart, Star, Eye } from 'lucide-react';
 import { useState } from 'react';
 
 interface ProductCardProps {
@@ -17,7 +17,6 @@ interface ProductCardProps {
 export const ProductCard = ({ product }: ProductCardProps) => {
   const { addItem, isInCart } = useCart();
   const [isLoading, setIsLoading] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleAddToCart = async () => {
     setIsLoading(true);
@@ -34,12 +33,10 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <div
-      className="group relative bg-white rounded-3xl shadow-lg shadow-[#AAAAAA]/20 hover:shadow-2xl hover:shadow-[#000000]/10 transition-all duration-500 transform hover:-translate-y-2 border border-[#AAAAAA]/20 backdrop-blur-sm overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl border border-[#AAAAAA]/10 transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
     >
-      {/* Modern Image Container */}
-      <div className="relative overflow-hidden rounded-t-3xl bg-gradient-to-br from-[#FFFDF2] to-[#AAAAAA]/10">
+      {/* Clean Image Container */}
+      <div className="relative overflow-hidden bg-[#FFFDF2]/50">
         <Link href={`/products/${product.id}`}>
           <div className="aspect-square overflow-hidden relative">
             <Image
@@ -47,163 +44,113 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               alt={product.name}
               width={400}
               height={400}
-              className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700 ease-out"
+              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out"
             />
-            {/* Gradient Overlay on Hover */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
           </div>
         </Link>
         
-        {/* Enhanced Discount Badge */}
+        {/* Minimal Discount Badge */}
         {discountPercentage > 0 && (
-          <div className="absolute top-4 left-4 bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-2 rounded-2xl text-sm font-bold shadow-lg animate-pulse">
-            <span className="flex items-center space-x-1">
-              <Zap className="h-3 w-3" />
-              <span>-{discountPercentage}%</span>
-            </span>
+          <div className="absolute top-3 left-3 bg-[#000000] text-[#FFFDF2] px-2 py-1 rounded-lg text-xs font-semibold">
+            -{discountPercentage}%
           </div>
         )}
 
-        {/* Modern Wishlist Button */}
-        <div className="absolute top-4 right-4">
+        {/* Clean Wishlist Button */}
+        <div className="absolute top-3 right-3">
           <WishlistButton 
             product={product} 
-            size="md" 
-            className="bg-white/90 backdrop-blur-sm hover:bg-white border-0 shadow-lg hover:shadow-xl rounded-2xl transition-all duration-300 transform hover:scale-110" 
+            size="sm" 
+            className="bg-white/80 backdrop-blur-sm hover:bg-white border-0 shadow-sm rounded-lg transition-all duration-200" 
           />
         </div>
 
-        {/* Quick Action Buttons */}
-        <div className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 transition-all duration-500 ${isHovered ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
-          <div className="flex space-x-2">
-            <Link href={`/products/${product.id}`}>
-              <button className="p-3 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 group/btn">
-                <Eye className="h-5 w-5 text-[#AAAAAA] group-hover/btn:text-[#000000]" />
-              </button>
-            </Link>
-            <button 
-              onClick={handleAddToCart}
-              disabled={product.stock === 0 || isLoading}
-              className="p-3 bg-[#000000] rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ShoppingCart className="h-5 w-5 text-white" />
-            </button>
-          </div>
-        </div>
-
-        {/* Elegant Out of Stock Overlay */}
+        {/* Out of Stock Overlay */}
         {product.stock === 0 && (
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center rounded-t-3xl">
-            <div className="text-center">
-              <Package className="h-12 w-12 text-white/80 mx-auto mb-2" />
-              <span className="text-white font-semibold text-lg">Out of Stock</span>
-              <p className="text-white/80 text-sm mt-1">Notify when available</p>
-            </div>
-          </div>
-        )}
-
-        {/* Stock Status Indicator */}
-        {product.stock > 0 && product.stock <= 5 && (
-          <div className="absolute bottom-4 right-4 bg-amber-500 text-white px-2 py-1 rounded-xl text-xs font-semibold">
-            Only {product.stock} left
+          <div className="absolute inset-0 bg-[#000000]/80 flex items-center justify-center">
+            <span className="text-[#FFFDF2] font-medium text-sm">Out of Stock</span>
           </div>
         )}
       </div>
 
-      {/* Modern Content Section */}
-      <div className="p-6 space-y-4">
-        {/* Product Title */}
-        <Link href={`/products/${product.id}`}>
-          <h3 className="font-bold text-xl text-[#000000] hover:text-[#000000] transition-colors duration-300 line-clamp-2 leading-tight">
-            {product.name}
-          </h3>
-        </Link>
-        
+      {/* Streamlined Content Section */}
+      <div className="p-4 space-y-3">
         {/* Category Tag */}
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center px-3 py-1 bg-[#AAAAAA]/20 text-[#AAAAAA] text-xs font-medium rounded-xl">
+          <span className="inline-block px-2 py-1 bg-[#AAAAAA]/15 text-[#AAAAAA] text-xs font-medium rounded-md">
             {product.category}
           </span>
-          
-          {/* Enhanced Rating */}
+          {/* Rating - Only show if exists */}
           {product.rating && (
             <div className="flex items-center space-x-1">
-              <div className="flex items-center">
-                {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`h-4 w-4 ${
-                      i < Math.floor(product.rating!)
-                        ? 'fill-amber-400 text-amber-400'
-                        : 'text-[#AAAAAA]/50'
-                    }`}
-                  />
-                ))}
-              </div>
-              <span className="text-sm font-medium text-[#AAAAAA]">
-                {product.rating?.toFixed(1)}
-              </span>
-              <span className="text-xs text-[#AAAAAA]/70">
-                ({product.reviews || 0})
+              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+              <span className="text-xs font-medium text-[#AAAAAA]">
+                {product.rating.toFixed(1)}
               </span>
             </div>
           )}
         </div>
 
-        {/* Product Description */}
-        <p className="text-[#AAAAAA] text-sm leading-relaxed line-clamp-2">
-          {product.description}
-        </p>
+        {/* Product Title */}
+        <Link href={`/products/${product.id}`}>
+          <h3 className="font-semibold text-lg text-[#000000] hover:text-[#AAAAAA] transition-colors duration-200 line-clamp-2 leading-tight">
+            {product.name}
+          </h3>
+        </Link>
 
-        {/* Enhanced Price Section */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-baseline space-x-2">
-            <span className="text-2xl font-black text-[#000000]">
-              {formatPrice(product.price)}
+        {/* Price Section */}
+        <div className="flex items-baseline space-x-2">
+          <span className="text-xl font-bold text-[#000000]">
+            {formatPrice(product.price)}
+          </span>
+          {product.originalPrice && (
+            <span className="text-sm text-[#AAAAAA]/60 line-through">
+              {formatPrice(product.originalPrice)}
             </span>
-            {product.originalPrice && (
-              <span className="text-lg text-[#AAAAAA]/70 line-through font-medium">
-                {formatPrice(product.originalPrice)}
-              </span>
-            )}
-          </div>
-          
-          {/* Stock Indicator */}
-          <div className="flex items-center space-x-1 text-xs">
-            <div className={`w-2 h-2 rounded-full ${product.stock > 10 ? 'bg-green-500' : product.stock > 0 ? 'bg-amber-500' : 'bg-red-500'}`} />
-            <span className={`font-medium ${product.stock > 10 ? 'text-green-600' : product.stock > 0 ? 'text-amber-600' : 'text-red-600'}`}>
-              {product.stock > 10 ? 'In Stock' : product.stock > 0 ? `${product.stock} left` : 'Out of Stock'}
+          )}
+        </div>
+
+        {/* Stock Status - Simplified */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-1">
+            <div className={`w-1.5 h-1.5 rounded-full ${
+              product.stock > 10 ? 'bg-green-500' : 
+              product.stock > 0 ? 'bg-amber-500' : 'bg-red-500'
+            }`} />
+            <span className="text-xs text-[#AAAAAA]">
+              {product.stock > 10 ? 'In Stock' : 
+               product.stock > 0 ? `${product.stock} left` : 'Out of Stock'}
             </span>
           </div>
         </div>
       </div>
 
-      {/* Modern Action Footer */}
-      <div className="px-6 pb-6">
-        <div className="flex space-x-3">
+      {/* Clean Action Footer */}
+      <div className="p-4 pt-0">
+        <div className="flex space-x-2">
           <Button
             onClick={handleAddToCart}
             disabled={product.stock === 0 || isLoading}
             loading={isLoading}
-            className="flex-1 bg-[#000000] hover:bg-[#333333] text-[#FFFDF2] border-0 rounded-2xl font-semibold py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+            className="flex-1 bg-[#000000] hover:bg-[#333333] text-[#FFFDF2] border-0 rounded-lg font-medium py-2.5 text-sm transition-all duration-200"
           >
-            <ShoppingCart className="mr-2 h-5 w-5" />
+            <ShoppingCart className="mr-1.5 h-4 w-4" />
             {isInCart(product.id) ? 'Add More' : 'Add to Cart'}
           </Button>
           
           <Link href={`/products/${product.id}`}>
             <Button 
               variant="outline" 
-              className="px-6 py-3 border-2 border-[#AAAAAA]/30 text-[#AAAAAA] hover:border-[#000000] hover:text-[#000000] hover:bg-[#AAAAAA]/10 rounded-2xl font-semibold transition-all duration-300 transform hover:scale-105"
+              className="px-3 py-2.5 border border-[#AAAAAA]/30 text-[#AAAAAA] hover:border-[#000000] hover:text-[#000000] hover:bg-[#AAAAAA]/5 rounded-lg transition-all duration-200"
             >
-              <Eye className="h-5 w-5" />
+              <Eye className="h-4 w-4" />
             </Button>
           </Link>
         </div>
       </div>
 
-      {/* Subtle Glow Effect */}
-      <div className="absolute inset-0 rounded-3xl bg-[#000000]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      {/* Subtle Hover Effect */}
+      <div className="absolute inset-0 rounded-2xl bg-[#000000]/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
     </div>
   );
 };

@@ -54,6 +54,24 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
   handler satisfies AppPageConfig<"/about">
 }
 
+// Validate ../../src/app/admin/analytics/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/admin/analytics/page.js")
+  handler satisfies AppPageConfig<"/admin/analytics">
+}
+
+// Validate ../../src/app/admin/categories/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/admin/categories/page.js")
+  handler satisfies AppPageConfig<"/admin/categories">
+}
+
+// Validate ../../src/app/admin/data/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/admin/data/page.js")
+  handler satisfies AppPageConfig<"/admin/data">
+}
+
 // Validate ../../src/app/admin/orders/page.tsx
 {
   const handler = {} as typeof import("../../src/app/admin/orders/page.js")
@@ -70,6 +88,24 @@ type LayoutConfig<Route extends LayoutRoutes = LayoutRoutes> = {
 {
   const handler = {} as typeof import("../../src/app/admin/products/page.js")
   handler satisfies AppPageConfig<"/admin/products">
+}
+
+// Validate ../../src/app/admin/reports/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/admin/reports/page.js")
+  handler satisfies AppPageConfig<"/admin/reports">
+}
+
+// Validate ../../src/app/admin/settings/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/admin/settings/page.js")
+  handler satisfies AppPageConfig<"/admin/settings">
+}
+
+// Validate ../../src/app/admin/users/page.tsx
+{
+  const handler = {} as typeof import("../../src/app/admin/users/page.js")
+  handler satisfies AppPageConfig<"/admin/users">
 }
 
 // Validate ../../src/app/cart/page.tsx

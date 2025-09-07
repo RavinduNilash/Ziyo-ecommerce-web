@@ -52,7 +52,7 @@ export const Header = () => {
             <div className="flex items-center space-x-6 text-[#FFFDF2]/90">
               <span className="flex items-center space-x-2 group hover:text-[#FFFDF2] transition-all duration-300">
                 <span className="w-2 h-2 bg-[#FFFDF2] rounded-full animate-pulse"></span>
-                <span className="font-medium tracking-wide">Free shipping worldwide over $50</span>
+                <span className="font-medium tracking-wide">Free shipping worldwide over LKR 16,500</span>
               </span>
               <span className="hidden sm:flex items-center space-x-2 group hover:text-[#FFFDF2] transition-all duration-300">
                 <span className="text-sm">✨</span>
